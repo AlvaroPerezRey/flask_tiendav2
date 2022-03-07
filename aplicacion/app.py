@@ -1,21 +1,18 @@
-from flask import Flask, request
-app = Flask(__name__)	
+from flask import Flask, render_template
+from flask_bootstrap import Bootstrap
+from flask_sqlalchemy import SQLAlchemy
+from aplicacion import config
+
+
+app = Flask(__name__)
+app.config.from_object(config)
+Bootstrap(app)	
+db = SQLAlchemy(app)
 
 @app.route('/')
 def inicio():
-    return 'Página principal'
+	return render_template("inicio.html")
 
-@app.route('/articulos/')
-def articulos():
-    return 'Lista de artículos'
-
-@app.route('/articulos/new',methods=["POST"])
-def articulos_new():
-	return 'Está URL recibe información de un formulario con el método POST'
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        return 'Hemos accedido con POST'
-    else:
-        return 'Hemos accedido con GET'
+@app.errorhandler(404)
+def page_not_found(error):
+	return render_template("error.html",error="Página no encontrada..."), 404
