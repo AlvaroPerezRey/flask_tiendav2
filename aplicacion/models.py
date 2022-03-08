@@ -55,7 +55,7 @@ class Producto(db.Model):
     precio_unidad = Column(Integer)
     categoria = Column(String(20))
     proveedor_id = Column(Integer, ForeignKey('proveedor.id'), nullable=False)
-    proveedores = relationship("Proveedor", backref="Producto", lazy='dynamic')
+    proveedores = relationship("Proveedor", backref="Producto")
     pedidos = relationship("Pedido", backref="Producto", lazy='dynamic')
 
 
@@ -70,7 +70,7 @@ class Pedido(db.Model):
     total = Column(Integer)
     cliente_id = Column(Integer, ForeignKey('cliente.id'), nullable=False)
     producto_id = Column(Integer, ForeignKey('producto.id'), nullable=False)
-    productos = relationship("Producto", backref="Pedido", lazy='dynamic')
+    productos = relationship("Producto", backref="Pedido")
 
     def __repr__(self):
 	    return (u'<{self.__class__.__name__}: {self.id}>'.format(self=self))
