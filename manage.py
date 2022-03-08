@@ -27,12 +27,12 @@ def add_data_tables():
         db.session.commit()
 
     productos=[
-        {"nombre":"Sudadera burdeos v3","marca":"OGs","stock":50,"precio_unidad":50,"categoria":"Sudaderas"},
-        {"nombre":"Sudadera roja v3","marca":"Nike","stock":50,"precio_unidad":60,"categoria":"Sudaderas"},
-        {"nombre":"Sudadera azul v3","marca":"Adidas","stock":50,"precio_unidad":75,"categoria":"Sudaderas"},
-        {"nombre":"Sudadera gris v3","marca":"Ripcurl","stock":50,"precio_unidad":80,"categoria":"Sudaderas"},
-        {"nombre":"Sudadera verde v3","marca":"Element","stock":50,"precio_unidad":70,"categoria":"Sudaderas"},
-        {"nombre":"Sudadera rosa v3","marca":"Asics","stock":50,"precio_unidad":90,"categoria":"Sudaderas"},
+        {"nombre":"Feel Special","marca":"Twice","stock":50,"precio_unidad":50,"categoria":"Sudaderas","proveedor_id":1},
+        {"nombre":"Butter","marca":"BTS","stock":50,"precio_unidad":60,"categoria":"Sudaderas","proveedor_id":2},
+        {"nombre":"Fight or Escape","marca":"TXT","stock":50,"precio_unidad":75,"categoria":"Sudaderas","proveedor_id":3},
+        {"nombre":"Young Luv","marca":"Stayc","stock":50,"precio_unidad":80,"categoria":"Sudaderas","proveedor_id":4},
+        {"nombre":"Miroh","marca":"Stray Kids","stock":50,"precio_unidad":70,"categoria":"Sudaderas","proveedor_id":5},
+        {"nombre":"Formula of Love","marca":"Twice","stock":50,"precio_unidad":90,"categoria":"Sudaderas","proveedor_id":6},
     ]
 
     for pro in productos:

@@ -13,8 +13,7 @@ class Cliente(db.Model):
     telefono = Column(Integer)
     password = Column(String(80))
     dni = Column(String(9))
-    direcciones = relationship("Direccion", backref="Cliente", lazy='dynamic')
-    pedidos = relationship("Pedido", backref="Cliente", lazy='dynamic')
+
 
     def __repr__(self):
 	    return (u'<{self.__class__.__name__}: {self.id}>'.format(self=self))
@@ -41,7 +40,7 @@ class Proveedor(db.Model):
     direccion = Column(String(100))
     email = Column(String(50))
     telefono = Column(Integer)
-    productos = relationship("Producto", backref="Producto", lazy='dynamic')
+
 
     def __repr__(self):
 	    return (u'<{self.__class__.__name__}: {self.id}>'.format(self=self))
@@ -55,8 +54,7 @@ class Producto(db.Model):
     precio_unidad = Column(Integer)
     categoria = Column(String(20))
     proveedor_id = Column(Integer, ForeignKey('proveedor.id'), nullable=False)
-    proveedores = relationship("Proveedor", backref="Producto")
-    pedidos = relationship("Pedido", backref="Producto", lazy='dynamic')
+
 
 
     def __repr__(self):
@@ -70,7 +68,7 @@ class Pedido(db.Model):
     total = Column(Integer)
     cliente_id = Column(Integer, ForeignKey('cliente.id'), nullable=False)
     producto_id = Column(Integer, ForeignKey('producto.id'), nullable=False)
-    productos = relationship("Producto", backref="Pedido")
+
 
     def __repr__(self):
 	    return (u'<{self.__class__.__name__}: {self.id}>'.format(self=self))
