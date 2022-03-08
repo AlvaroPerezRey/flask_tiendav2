@@ -9,7 +9,7 @@ app.config.from_object(config)
 Bootstrap(app)	
 db = SQLAlchemy(app)
 
-from aplicacion.models import Producto
+from aplicacion.models import Producto, Cliente
 
 @app.route('/')
 def inicio():
@@ -19,6 +19,16 @@ def inicio():
 def producto():
     productos=Producto.query.all()
     return render_template("productos.html", productos=productos)
+
+@app.route('/productos/<id>')
+def producto_id(id):
+    productos=Producto.query.filter_by(id=id)
+    return render_template("productos_id.html", productos=productos)
+
+@app.route('/clientes/')
+def cliente():
+    clientes=Cliente.query.all()
+    return render_template("clientes.html", clientes=clientes)
 
 @app.errorhandler(404)
 def page_not_found(error):

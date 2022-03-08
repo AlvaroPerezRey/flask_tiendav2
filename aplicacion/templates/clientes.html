@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Tienda de CDs de Musica{% endblock %}
+{% block contenido %}
+	    <h3>Nuestros Clientes...</h3>
+	    <div class="panel panel-default">
+  		<!-- Default panel contents -->
+  			<div class="panel-heading">Clientes</div>
+  			<table class="table">
+  	    		{% for cli in clientes %}
+  	    			<tr>
+  	    				<td>{{cli.nombre}}</td>
+						<td>{{cli.marca}}</td>
+  	    			</tr>  
+  	    		{% endfor %}
+  	    	</table>
+  	    </div>
+  	</div>
+
+ 	
+  
+{% endblock %}
