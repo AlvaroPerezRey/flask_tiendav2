@@ -1,34 +1,37 @@
 {% extends "base.html" %}
-{% block title %}Tienda de CDs{% endblock %}
+{% block title %}Tienda de Videojuegos{% endblock %}
 {% block contenido %}
 <div class="container">
   <div class="col-md-2"></div>
   <div class="col-md-6">
-    <h3>Nuevo CD</h3>  
+    <h3>Nuevo Videojuego</h3>  
     {% for field, errors in form.errors.items() %}
       <div class="alert alert-danger">
         {{ form[field].label }}: {{ ', '.join(errors) }}
       </div>
     {% endfor %}
-      <form class="form-horizontal" action={{url_for("productos_new")}} method="post" enctype="multipart/form-data">
+      <form class="form-horizontal" method="post" enctype="multipart/form-data">
         <div class="form-group">
           {{ form.csrf_token }}
           {{form.nombre.label() }}{{form.nombre(size="100",class="form-control")}}<br/>
         </div>
         <div class="form-group">
-          {{form.marca.label() }}{{form.marca(size="10",class="form-control")}}<br/>
+          {{form.precio.label() }}{{form.precio(size="10",class="form-control")}}<br/>
+        </div>
+        <div class="form-group">
+          {{form.iva.label() }}{{form.iva(size="10",class="form-control")}}<br/>
+        </div>
+        <div class="form-group">
+          {{form.photo.label() }}{{form.photo()}}<br/>
         </div>
         <div class="form-group">
           {{form.stock.label() }}{{form.stock(size="10",class="form-control")}}<br/>
         </div>
         <div class="form-group">
-            {{form.precio_unidad.label() }}{{form.precio_unidad(size="10",class="form-control")}}<br/>
-          </div>
-          <div class="form-group">
-            {{form.categoria.label() }}{{form.categoria(size="10",class="form-control")}}<br/>
-          </div>
+          {{form.descripcion.label() }}<br/>{{form.descripcion(rows="20",cols="60",class="form-control")}}<br/>
+        </div>
         <div class="form-group">
-          {{form.proveedor_id.label() }}{{form.proveedor_id(size="100",class="form-control")}}<br/>
+          {{form.CategoriaId.label() }}{{form.CategoriaId(class="form-control")}}<br/>
         </div>
 
           {{form.submit(class="btn btn-lg btn-primary btn-block")}}
@@ -39,4 +42,3 @@
  	
   
 {% endblock %}
-
