@@ -1,8 +1,7 @@
 from flask_script import Manager
 from aplicacion.app import app,db
 from aplicacion.models import *
-from getpass import getpass
-
+    
 manager = Manager(app)
 app.config['DEBUG'] = True # Ensure debugger will load.
 
@@ -45,16 +44,6 @@ def add_data_tables():
         db.session.add(juego)
         db.session.commit()
 
-@manager.command
-def create_admin():
-    usuario={"username":input("Usuario:"),
-            "password":getpass("Password:"),
-            "nombre":input("Nombre completo:"),
-            "email":input("Email:"),
-            "admin": True}
-    usu=Usuarios(**usuario)
-    db.session.add(usu)
-    db.session.commit()
-
+    
 if __name__ == '__main__':
     manager.run()
